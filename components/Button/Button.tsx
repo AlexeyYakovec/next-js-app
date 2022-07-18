@@ -5,7 +5,8 @@ import cn from 'classnames';
 
 export const Button = ({ appearance, arrow = 'none', children, className, ...props }: ButtonProps): JSX.Element => {
 	return (
-		<button
+		<>
+				<button
 			className={cn(styles.button, className, {
 				[styles.primary]: appearance == 'primary',
 				[styles.ghost]: appearance == 'ghost',
@@ -14,10 +15,13 @@ export const Button = ({ appearance, arrow = 'none', children, className, ...pro
 		>
 			{children}
 			{arrow != 'none' && <span className={cn(styles.arrow, {
-				[styles.down]: arrow == 'down'
+				[styles.down]: arrow == 'down',
+				[styles.right]: arrow == 'right',
 			})}>
 				<ArrowIcon />
 			</span>}
 		</button>
+		</>
+
 	);
 };

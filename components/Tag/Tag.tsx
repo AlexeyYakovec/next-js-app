@@ -2,7 +2,7 @@ import { PProps } from './Tag.props';
 import styles from './Tag.module.css';
 import cn from 'classnames';
 
-export const Tag = ({ size = 's', children, color = 'ghost', href, className, ...props }: PProps): JSX.Element => {
+export const Tag = ({ size = 's', children, color = 'ghost', href, className, ...props }: PProps): JSX.Element => {	
 	return (
 		<div
 			className={cn(styles.tag, className, {
@@ -24,3 +24,5 @@ export const Tag = ({ size = 's', children, color = 'ghost', href, className, ..
 		</div>
 	);
 };
+
+
