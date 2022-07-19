@@ -6,11 +6,12 @@ import styles from './Rating.module.css';
 import cn from 'classnames';
 // icon
 import StarIcon from './star.svg';
+import { log } from 'console';
 
 export const Rating = ({ isEditable = false, rating, setRating, ...props}: RatingProps): JSX.Element => {
 	// как должен выглядить компонент
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
-	
+
 	useEffect(() => {
 		constructRating(rating);
 	}, [rating]);
@@ -41,22 +42,27 @@ export const Rating = ({ isEditable = false, rating, setRating, ...props}: Ratin
 		setRatingArray(updateArray);
 	};
 
-	//
+	// changeDisplay (Изменение отображение)
 	const changeDisplay = (i: number) => {
+		// если isEditable то ничего не редактируем
 		if (!isEditable) {
 			return;
 		}
 		constructRating(i);
 	};
 
+	// onClick (При нажатии)
 	const onClick = (i: number) => {
+		// если isEditable и setRating то ничего не редактируем
 		if (!isEditable || !setRating) {
 			return;
 		}
 		setRating(i);
 	};
 
+
 	const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
+		// e.code если мы не нажимаем space тогда ничего не возвращать (допольнительно делаем проверку на наличие setRating) 
 		if (e.code != 'Space' || !setRating) {
 			return;
 		}
@@ -68,6 +74,8 @@ export const Rating = ({ isEditable = false, rating, setRating, ...props}: Ratin
 			{ratingArray.map((r, i) => (
 				<span key={i}>{r}</span>
 			))}
+
+		
 		</div>
 	);
 };
