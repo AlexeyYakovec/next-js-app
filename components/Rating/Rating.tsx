@@ -6,7 +6,6 @@ import styles from './Rating.module.css';
 import cn from 'classnames';
 // icon
 import StarIcon from './star.svg';
-import { log } from 'console';
 
 export const Rating = ({ isEditable = false, rating, setRating, ...props}: RatingProps): JSX.Element => {
 	// как должен выглядить компонент
@@ -16,7 +15,7 @@ export const Rating = ({ isEditable = false, rating, setRating, ...props}: Ratin
 		constructRating(rating);
 	}, [rating]);
 
-	// функция для заполнения стейта
+	// constructRating функция для заполнения стейта
 	// currentRating - значение рейтинга, так же можно использовать rating из пропсов
 	const constructRating = (currentRating: number) => {
 	// updateArray - массив в который мы будем передавать стейт описанный выше [ratingArray, setRatingArray]
