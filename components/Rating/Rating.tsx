@@ -20,13 +20,13 @@ export const Rating = ({ isEditable=false, rating, setRating,...props}: RatingPr
 				<span
 					className={cn(styles.star, {
 					[styles.filled]: i < currentRating,
-					[styles.editable]: isEditable,})}
+					[styles.editable]: isEditable,
+					})}
 					onMouseEnter={()=> changeDisplay(i+1)}
 					onMouseLeave={() => changeDisplay(rating)}
 					onClick={() => onClick(i + 1)}
 				>
 					<StarIcon
-
 					tabIndex={isEditable ? 0 : -1}
 					onKeyDown={(e: KeyboardEvent<SVGAElement>)=> isEditable && handleSpace(i+1, e)}
 				/>
