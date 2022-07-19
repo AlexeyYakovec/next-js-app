@@ -7,14 +7,18 @@ import cn from 'classnames';
 // icon
 import StarIcon from './star.svg';
 
-export const Rating = ({ isEditable=false, rating, setRating,...props}: RatingProps): JSX.Element => {
+export const Rating = ({ isEditable = false, rating, setRating, ...props}: RatingProps): JSX.Element => {
+	// как должен выглядить компонент
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 	
 	useEffect(() => {
 		constructRating(rating);
 	}, [rating]);
 
+	// функция для заполнения стейта
+	// currentRating - значение рейтинга, так же можно использовать rating из пропсов
 	const constructRating = (currentRating: number) => {
+	// updateArray - массив в который мы будем передавать стейт описанный выше [ratingArray, setRatingArray]
 		const updateArray = ratingArray.map((r: JSX.Element, i: number) => {
 			return (
 				<span
@@ -37,6 +41,7 @@ export const Rating = ({ isEditable=false, rating, setRating,...props}: RatingPr
 		setRatingArray(updateArray);
 	};
 
+	//
 	const changeDisplay = (i: number) => {
 		if (!isEditable) {
 			return;
@@ -66,3 +71,7 @@ export const Rating = ({ isEditable=false, rating, setRating,...props}: RatingPr
 		</div>
 	);
 };
+
+
+
+
