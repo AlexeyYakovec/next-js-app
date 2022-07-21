@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Button, Htag, P, Rating, Tag } from '../components';
 
 // layout
-import { Layout, withLayout } from '../layout/Layout';
+import { withLayout } from '../layout/Layout';
 
  function Home(): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
